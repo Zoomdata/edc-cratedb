@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Checkstyle-Configuration: Zoomdata Checks
+    Description: none
+-->
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+    <property name="severity" value="warning"/>
+    <module name="TreeWalker">
+        <module name="FileContentsHolder"/>
+        <module name="SuppressWarningsHolder"/>
+        <property name="tabWidth" value="4"/>
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocType">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocVariable">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocStyle"/>
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="PackageName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName">
+            <property name="tokens" value="CLASS_DEF"/>
+        </module>
+        <module name="AvoidStarImport">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="false"/>
+        </module>
+        <module name="LineLength">
+            <property name="ignorePattern" value="^import"/>
+            <property name="max" value="120"/>
+        </module>
+        <module name="MethodLength"/>
+        <module name="ParameterNumber"/>
+        <module name="EmptyForIteratorPad"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround">
+            <property name="tokens"
+                      value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,LITERAL_ASSERT,TYPE_EXTENSION_AND,WILDCARD_TYPE"/>
+        </module>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="AvoidNestedBlocks">
+            <property name="allowInSwitchCase" value="true"/>
+        </module>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces">
+            <property name="tokens" value="LITERAL_DO,LITERAL_ELSE,LITERAL_FOR,LITERAL_WHILE"/>
+        </module>
+        <module name="RightCurly"/>
+        <module name="AvoidInlineConditionals">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="RedundantThrows">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="DesignForExtension">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="FinalClass"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier"/>
+        <module name="ArrayTypeStyle"/>
+        <module name="FinalParameters">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="UpperEll"/>
+        <module name="CyclomaticComplexity">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment"
+                      value="Cyclomatic complexity should not exceed 14"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="printStackTrace"/>
+            <property name="format" value="printStackTrace"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Output to System.err is discouraged, use logger instead"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="system.out"/>
+            <property name="format" value="System.out.print"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Output to System.out is discouraged, use logger instead"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="system.err"/>
+            <property name="format" value="System.err.print"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Output to System.err is discouraged, use logger instead"/>
+        </module>
+        <!--<module name="j2ee.FinalStatic">-->
+        <!--<metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="All static fields should be final and used as constants only"/>-->
+        <!--<metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>-->
+        <!--<property name="severity" value="ignore"/>-->
+        <!--</module>-->
+        <module name="RegexpSinglelineJava">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="sun packages"/>
+            <property name="format" value="sun."/>
+            <property name="message" value="using sun packages is not allowed"/>
+        </module>
+        <module name="IllegalThrows"/>
+        <module name="MultipleStringLiterals">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="PackageDeclaration"/>
+        <module name="ParameterAssignment"/>
+        <module name="ReturnCount">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="StringLiteralEquality"/>
+        <module name="UnnecessaryParentheses"/>
+        <module name="MutableException"/>
+        <module name="InterfaceIsType">
+            <property name="severity" value="ignore"/>
+        </module>
+    </module>
+    <module name="Translation"/>
+    <!--<module name="StrictDuplicateCode">-->
+    <!--This module is temporarily disabled because of a defect in CheckStyle plugin. Please refer to ZD-16348-->
+    <!--<property name="min" value="15"/>-->
+    <!--</module>-->
+    <module name="FileLength"/>
+    <!-- Make the @SuppressWarnings annotations available to Checkstyle -->
+    <module name="SuppressWarningsFilter"/>
+    <module name="SuppressWithNearbyCommentFilter">
+        <property name="commentFormat" value="CHECKSTYLE DISABLE ([\w\|]+) FOR (-?\d+) LINES"/>
+        <property name="checkFormat" value="$1"/>
+        <property name="influenceFormat" value="$2"/>
+    </module>
+    <module name="SuppressionCommentFilter"/>
+
+</module>
