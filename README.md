@@ -1,4 +1,4 @@
-Sample EDC server framework for building memsql connector from Zoomdata EDC 2.0 API
+Sample EDC server framework for building crateio connector from Zoomdata EDC 2.0 API
 To build, execute the following command
 mvn install
 
