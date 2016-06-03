@@ -54,8 +54,8 @@ public class Client {
 
         Map<String, String> dsParams = new HashMap<>();
         dsParams.put("JDBC_URL", "crate://10.2.1.251:4300");
-     //   dsParams.put("USERNAME", "zoomdata");
-     //   dsParams.put("PASSWORD", "Z00mda1a");
+     //   dsParams.put("USERNAME", "");
+     //   dsParams.put("PASSWORD", "");
         System.out.println("Datasource configuration: " + dsParams);
 
         CollectionInfo collectionInfo = new CollectionInfo();
