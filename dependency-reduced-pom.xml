@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.zoomdata</groupId>
   <artifactId>edc-server-cratedb</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <build>
     <plugins>
       <plugin>
@@ -149,7 +149,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <crate.jdbc.version>1.9.3</crate.jdbc.version>
+    <crate.jdbc.version>1.13.0</crate.jdbc.version>
     <inceptionYear>2012</inceptionYear>
     <currentYear>2016</currentYear>
     <copyrightOwner>Zoomdata, Inc.</copyrightOwner>

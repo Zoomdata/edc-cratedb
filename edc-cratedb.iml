@@ -10,8 +10,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: io.crate:crate-jdbc:1.9.3" level="project" />
-    <orderEntry type="library" name="Maven: io.crate:crate-client:0.52.4" level="project" />
+    <orderEntry type="library" name="Maven: io.crate:crate-jdbc:1.13.0" level="project" />
+    <orderEntry type="library" name="Maven: io.crate:crate-client:0.55.2" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.zoomdata:edc-api:2.1.0-SNAPSHOT" level="project" />
