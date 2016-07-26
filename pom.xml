@@ -247,13 +247,13 @@
         <repository>
             <id>zoomdata-artifactory-libs</id>
             <name>zoomdata-artifactory-libs</name>
-            <url>http://maven.zoomdata.com/artifactory/libs-release-local</url>
+            <url>http://public-maven.zoomdata.com/artifactory/libs-release-local</url>
         </repository>
 
         <repository>
             <id>zoomdata-artifactory-libs-snapshot</id>
             <name>zoomdata-artifactory-libs-snapshot</name>
-            <url>http://maven.zoomdata.com/artifactory/libs-snapshot-local</url>
+            <url>http://public-maven.zoomdata.com/artifactory/libs-snapshot-local</url>
         </repository>
 
         <repository>
