@@ -18,5 +18,7 @@ https://drive.google.com/open?id=0B5hqni4_xCGadGVMek40SDcyTVU
 For setting up connector, please use these parameters 
 
 JDBC_URL
+
 USERNAME
+
 PASSWORD
