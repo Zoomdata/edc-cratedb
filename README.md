@@ -1,24 +1,20 @@
 # Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
 
-Sample EDC server framework for building crateio connector from Zoomdata EDC 2.0 API
-To build, execute the following command
-mvn clean install -Dmaven.test.skip=true
+Sample EDC server framework for building a crate.io connector from Zoomdata 2.x Connector API
 
-To run the server, execute the following command:
-./run-server.sh
+## Prerequisites
 
-To run client, execute the following command:
-Make sure you edit the client code to relfect your db schema and table.
-./run-client.sh
+This project assumes working installations of:
 
+* JDK 1.8
+* Maven 3.x
 
-Please refer to the following video for setting up connection from Zoomdata.
-https://drive.google.com/open?id=0B5hqni4_xCGadGVMek40SDcyTVU
+To build the project:
 
-For setting up connector, please use these parameters 
+`mvn clean install`
 
-JDBC_URL
+To run the server:
 
-USERNAME
+`./run-server.sh`
 
-PASSWORD
+TODO more details about running the test suites and downloading shell

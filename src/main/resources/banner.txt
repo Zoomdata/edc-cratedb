@@ -1,0 +1,20 @@
+${AnsiColor.GREEN}       x,
+${AnsiColor.GREEN}       Mk                    .:l:
+${AnsiColor.GREEN}      .MX             .:okKNMMMMMW:
+${AnsiColor.GREEN}     .dMM,     .;lx0NMMMMMMMM0dd;.
+${AnsiColor.GREEN}   :0;xMM0:oOXMMWOdc;dNMMMk;
+${AnsiColor.GREEN}   .okNMMMW0xc,.   cNMMWo.
+${AnsiColor.GREEN}      xMMMO      lNMMXc
+${AnsiColor.GREEN}      xMMM0    ,XMMN:
+${AnsiColor.GREEN}      cMMMO   lMMWl
+${AnsiColor.GREEN}        cKK  kMMK.
+${AnsiColor.GREEN}            kMMo   ...'',:cllllol;
+${AnsiColor.GREEN}          .XMK.     .,;coxkWN00OOOKl
+${AnsiColor.GREEN}         'WMWddk00Kkc;,.
+${AnsiColor.GREEN}        ;WMMMMWkl,.           _
+${AnsiColor.GREEN}       ;WMW0o.
+${AnsiColor.GREEN}      ,MMO.
+${AnsiColor.GREEN}     .X:
+${AnsiColor.GREEN}    .,
+${AnsiColor.DEFAULT}
+Zoomdata Sample Connector Server :: v2
