@@ -107,9 +107,8 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
             .addParameters(stringParameter("USER_NAME").description("Specify the user name if connecting to your database requires authentication"))
             .addParameters(passwordParameter("PASSWORD").description("Specify the password if connecting to your database requires authentication"))
             .maxVersion("0.5")
-            .minVersion("0.5");
-            // TODO put icon in when UX-454 is complete
-            //.svgIcon("/cratedb_icon.svg");
+            .minVersion("0.5")
+            .svgIcon("/crateio_logo.svg");
     }
 
 }
