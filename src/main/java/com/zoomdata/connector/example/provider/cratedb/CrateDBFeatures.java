@@ -14,7 +14,6 @@ public class CrateDBFeatures implements IFeatures {
 
     private final Map<String, String> features =
             ImmutableMap.<String, String>builder()
-                .put("SOURCE.NAME", "CRATEDB")
                 .put("REQUEST.SEND_METADATA", "true")
                 .put("FEATURE.LIVE_SOURCE", "true")
                 .put("FEATURE.CACHING_ENABLED", "false")

@@ -15,6 +15,6 @@ To build the project:
 
 To run the server:
 
-`./run-server.sh`
+`./start-server.sh`
 
 TODO more details about running the test suites and downloading shell
