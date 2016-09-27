@@ -3,109 +3,172 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <version>1.0.1</version>
+    <version>1.1</version>
     <groupId>com.zoomdata</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>edc-server-cratedb</artifactId>
+    <artifactId>connector-server-cratedb</artifactId>
     <properties>
-        <!-- copyright -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Copyright -->
         <inceptionYear>2012</inceptionYear>
         <currentYear>2016</currentYear>
         <copyrightOwner>Zoomdata, Inc.</copyrightOwner>
-        <edc-api.version>2.1.0-SNAPSHOT</edc-api.version>
-        <crate.jdbc.version>1.13.0</crate.jdbc.version>
-
+        <!-- Versions -->
+        <connector-api.version>2.1.7</connector-api.version>
+        <crate.jdbc.version>1.13.1</crate.jdbc.version>
+        <query.dsl.version>4.1.4</query.dsl.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <logback.version>1.1.7</logback.version>
+        <lombok.version>1.16.10</lombok.version>
+        <thrift.version>0.9.3</thrift.version>
+        <dbcp2.version>2.1.1</dbcp2.version>
+        <!-- Additional versions for core things -->
+        <spring.boot.version>1.4.0.RELEASE</spring.boot.version>
+        <json.version>20160810</json.version>
+        <joda.time.version>2.9.4</joda.time.version>
+        <commons.lang.version>3.4</commons.lang.version>
+        <guava.version>19.0</guava.version>
     </properties>
+
+    <repositories>
+        <!-- The Zoomdata Maven repository for getting generated Thrift classes -->
+        <repository>
+            <id>zoomdata-artifactory-libs</id>
+            <name>zoomdata-artifactory-libs</name>
+            <url>http://public-maven.zoomdata.com/artifactory/libs-release-local</url>
+        </repository>
+        <!-- Required for Crate DB -->
+        <repository>
+            <id>bintray-central</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/crate/crate</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
 
+        <!-- Crate DB JDBC drivers -->
         <dependency>
             <groupId>io.crate</groupId>
             <artifactId>crate-jdbc</artifactId>
             <version>${crate.jdbc.version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-        </dependency>
-
-        <!-- This is out library with domain thrift generated classes -->
+        <!-- This is the library with thrift generated classes -->
         <dependency>
             <groupId>com.zoomdata</groupId>
             <artifactId>edc-api</artifactId>
-            <version>${edc-api.version}</version>
+            <version>${connector-api.version}</version>
         </dependency>
 
-        <!-- Thrift library is need for embedded servers -->
+        <!-- Thrift library is needed for embedded servers -->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
-            <version>0.9.2</version>
+            <version>${thrift.version}</version>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
+            <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-
-        <!-- fancy dates package -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.9.1</version>
-        </dependency>
-
-        <!-- MySQL jdbc driver -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.32</version>
-        </dependency>
-
-        <!-- Query DSL helps to build sql query -->
+        <!-- Query DSL helps easily build SQL queries -->
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-core</artifactId>
-            <version>4.0.4</version>
+            <version>${query.dsl.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-sql</artifactId>
-            <version>4.0.4</version>
+            <version>${query.dsl.version}</version>
         </dependency>
 
         <!-- Connection Pool -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.1</version>
+            <version>${dbcp2.version}</version>
         </dependency>
 
-        <!-- Avoid Ceremony -->
+        <!-- Auto-generate getters, setters, constructors, etc. -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Not used directly by the CrateDB connector, but needed by Utils, etc. -->
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <!-- Jetty Embedded Server -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+            <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax.el</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!-- Import dependency management from Spring Boot -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${spring.boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -119,88 +182,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.zoomdata.edc.server.cratedb.CrateDbServerMain</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>Client</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <finalName>Client</finalName>
-
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>driver</shadedClassifierName>
-
-
-                            <artifactSet>
-                                <excludes>
-                                    <exclude>META-INF/*</exclude>
-                                    <exclude>log4j.properties</exclude>
-
-                                </excludes>
-
-                            </artifactSet>
-
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.zoomdata.edc.client.Client</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- We fail build of checkstyle errors -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.15</version>
-                <configuration>
-                    <linkXRef>false</linkXRef>
-                    <configLocation>config/checkstyle.xml</configLocation>
-                    <consoleOutput>true</consoleOutput>
-                    <violationSeverity>warning</violationSeverity>
-                    <failsOnError>false</failsOnError>
-                    <failOnViolation>false</failOnViolation>
-                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>checkstyle</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <failOnViolation>false</failOnViolation>
-                            <failsOnError>true</failsOnError>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- Adding/Checking copyright header to source files -->
-
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -240,29 +222,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- For running Spring Boot via Maven -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <configuration>
+                    <mainClass>com.zoomdata.connector.example.framework.ConnectorServerMain</mainClass>
+                    <jvmArguments>
+                        -Duser.timezone=GMT
+                    </jvmArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <layout>ZIP</layout>
+                            <classifier>exec</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>zoomdata-artifactory-libs</id>
-            <name>zoomdata-artifactory-libs</name>
-            <url>http://public-maven.zoomdata.com/artifactory/libs-release-local</url>
-        </repository>
-
-        <repository>
-            <id>zoomdata-artifactory-libs-snapshot</id>
-            <name>zoomdata-artifactory-libs-snapshot</name>
-            <url>http://public-maven.zoomdata.com/artifactory/libs-snapshot-local</url>
-        </repository>
-
-        <repository>
-            <id>bintray-central</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/crate/crate</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>

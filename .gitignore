@@ -1,0 +1,17 @@
+*.class
+**/build/
+**/.gradle/
+**/target/
+**/dependency-reduced-pom.xml
+**/coverage-error.log
+**/edc-server.log
+*.iml
+**/.idea/
+logs/
+edc-api/src/main/gen/
+scripts/logs/
+scripts/jars/
+scripts/edc-server.jar
+scripts/edc-server.log*
+init.gradle
+workspace.xml
