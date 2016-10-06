@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <version>1.1</version>
+    <version>1.1.1</version>
     <groupId>com.zoomdata</groupId>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>connector-server-cratedb</artifactId>
@@ -14,7 +14,7 @@
         <currentYear>2016</currentYear>
         <copyrightOwner>Zoomdata, Inc.</copyrightOwner>
         <!-- Versions -->
-        <connector-api.version>2.1.7</connector-api.version>
+        <connector-api.version>2.3.1</connector-api.version>
         <crate.jdbc.version>1.13.1</crate.jdbc.version>
         <query.dsl.version>4.1.4</query.dsl.version>
         <slf4j.version>1.7.21</slf4j.version>
