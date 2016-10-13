@@ -28,7 +28,7 @@ RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/so
 RUN echo "deb https://cdn.crate.io/downloads/apt/stable/ jessie main" > /etc/apt/sources.list
 RUN apt-get -y update
 # Control version of Crate to ensure image does not break. Manually upgrade after verification
-RUN apt-get -y install crate=0.55.5-1~jessie
+RUN apt-get -y install crate
 
 # Add our data to the image - this is not at all a best practice but easier to bootstrap for our purposes
 # Docker will automatically unpack this
