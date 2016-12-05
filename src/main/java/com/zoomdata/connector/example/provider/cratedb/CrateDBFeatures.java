@@ -32,6 +32,9 @@ public class CrateDBFeatures implements IFeatures {
                     .put("FEATURE.SUPPORTS_NESTED", "false")
                     .put("FEATURE.SUPPORTED_BY_SPARKIT", "true")
                     .put("FEATURE.SUPPORTS_SCHEMA", "true")
+                    // Not a real "feature" but this is required for enabling FEATURE.PAGING_AND_SORTING.AGGREGATED
+                    .put("FEATURE.PAGING_AND_SORTING", "true")
+                    .put("FEATURE.PAGING_AND_SORTING.AGGREGATED", "true")
                     // Not a real "feature" but this is required for Zoomdata to communicate
                     .put("REQUEST.TYPE", "STRUCTURED")
                     // Crate support of sub-select is inadequate for this
@@ -40,8 +43,6 @@ public class CrateDBFeatures implements IFeatures {
                     .put("FEATURE.LV_METRIC", "false")
                     .put("FEATURE.PERCENTILES", "false")
                     .put("FEATURE.HISTOGRAM", "false")
-                    .put("FEATURE.PAGING_AND_SORTING", "true")
-                    .put("FEATURE.PAGING_AND_SORTING.AGGREGATED", "true")
                     .build();
 
     @Override
