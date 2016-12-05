@@ -14,33 +14,36 @@ public class CrateDBFeatures implements IFeatures {
 
     private final Map<String, String> features =
             ImmutableMap.<String, String>builder()
-                .put("REQUEST.SEND_METADATA", "true")
-                .put("FEATURE.LIVE_SOURCE", "true")
-                .put("FEATURE.FAST_DISTINCT_VALUES", "true")
-                .put("FEATURE.GROUP_BY_TIME", "true")
-                .put("FEATURE.GROUP_BY_TIME.GROUP_BY_UNIX_TIME", "true")
-                .put("FEATURE.MULTI_GROUP_SUPPORT", "true")
-                .put("FEATURE.REFRESHABLE", "true")
-                .put("FEATURE.SUPPORT_OPTIMIZED_READ", "false")
-                .put("FEATURE.TEXT_SEARCH", "false")
-                .put("FEATURE.RAW_DATA_ONLY", "false")
-                .put("FEATURE.OFFSET", "true")
-                .put("FEATURE.DISTINCT_COUNT", "true")
-                .put("FEATURE.DISTINCT_COUNT.DISTINCT_COUNT_ONLY_ONE", "false")
-                .put("FEATURE.PARTITION", "false")
-                .put("FEATURE.SUPPORTS_MULTI_VALUED", "false")
-                .put("FEATURE.SUPPORTS_NESTED", "false")
-                .put("FEATURE.SUPPORTED_BY_SPARKIT", "true")
-                .put("FEATURE.SUPPORTS_SCHEMA", "true")
-                // Not a real "feature" but this is required for Zoomdata to communicate
-                .put("REQUEST.TYPE", "STRUCTURED")
-                // Crate support of sub-select is inadequate for this
-                .put("FEATURE.CUSTOM_QUERY", "false")
-                // Crate doesn't support the necessary syntax for these features
-                .put("FEATURE.LV_METRIC", "false")
-                .put("FEATURE.PERCENTILES", "false")
-                .put("FEATURE.HISTOGRAM", "false")
-                .build();
+                    .put("REQUEST.SEND_METADATA", "true")
+                    .put("FEATURE.LIVE_SOURCE", "true")
+                    .put("FEATURE.FAST_DISTINCT_VALUES", "true")
+                    .put("FEATURE.GROUP_BY_TIME", "true")
+                    .put("FEATURE.GROUP_BY_TIME.GROUP_BY_UNIX_TIME", "true")
+                    .put("FEATURE.MULTI_GROUP_SUPPORT", "true")
+                    .put("FEATURE.REFRESHABLE", "true")
+                    .put("FEATURE.SUPPORT_OPTIMIZED_READ", "false")
+                    .put("FEATURE.TEXT_SEARCH", "false")
+                    .put("FEATURE.RAW_DATA_ONLY", "false")
+                    .put("FEATURE.OFFSET", "true")
+                    .put("FEATURE.DISTINCT_COUNT", "true")
+                    .put("FEATURE.DISTINCT_COUNT.DISTINCT_COUNT_ONLY_ONE", "false")
+                    .put("FEATURE.PARTITION", "false")
+                    .put("FEATURE.SUPPORTS_MULTI_VALUED", "false")
+                    .put("FEATURE.SUPPORTS_NESTED", "false")
+                    .put("FEATURE.SUPPORTED_BY_SPARKIT", "true")
+                    .put("FEATURE.SUPPORTS_SCHEMA", "true")
+                    // Not a real "feature" but this is required for enabling FEATURE.PAGING_AND_SORTING.AGGREGATED
+                    .put("FEATURE.PAGING_AND_SORTING", "true")
+                    .put("FEATURE.PAGING_AND_SORTING.AGGREGATED", "true")
+                    // Not a real "feature" but this is required for Zoomdata to communicate
+                    .put("REQUEST.TYPE", "STRUCTURED")
+                    // Crate support of sub-select is inadequate for this
+                    .put("FEATURE.CUSTOM_QUERY", "false")
+                    // Crate doesn't support the necessary syntax for these features
+                    .put("FEATURE.LV_METRIC", "false")
+                    .put("FEATURE.PERCENTILES", "false")
+                    .put("FEATURE.HISTOGRAM", "false")
+                    .build();
 
     @Override
     public Map<String, String> getAllFeatures() {

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-java -jar target/connector-server-cratedb-1.1-exec.jar
+# If timezone is not set to UTC, some time-based integration tests may fail
+java -Duser.timezone=UTC -jar target/connector-server-cratedb-1.1.1-exec.jar
