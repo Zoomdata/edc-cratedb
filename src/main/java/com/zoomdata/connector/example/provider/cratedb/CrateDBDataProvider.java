@@ -29,7 +29,7 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
     // The unique connection type that will be registered in Zoomdata
     protected final static String CONNECTION_TYPE = "CRATEDB";
 
-    // This is how we'll assign special flats for Zoomdata such as PARTITION
+    // This is how we'll assign special flags for Zoomdata such as PARTITION
     private final CrateDBMetaFlagsDetector metaFlagsDetector;
 
     public CrateDBDataProvider() {
