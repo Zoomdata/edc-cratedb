@@ -1,15 +1,15 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.framework.common.sql;
 
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.ComparableExpressionBase;
 import com.querydsl.sql.SQLQuery;
+import com.zoomdata.gen.edc.filter.Filter;
 import com.zoomdata.gen.edc.metric.Metric;
 
 import java.util.List;
-
 
 public interface MetricsProcessor {
     /**
@@ -26,13 +26,13 @@ public interface MetricsProcessor {
      * @param sqlQueryBuilder SQLQueryBuilder. May be used to create processors required by subqueries using its
      *                        factory methods.
      * @param sqlQuery main query.
-     * @param filtersProcessor filter processor used in main query. May be used to get filters in case when filtering
-     *                         in subquery must be the same as in main query.
+     * @param thriftFilters may be used to as filters in case when filtering in subquery
+     *                      must be the same as in main query.
      * @param groupsProcessor groups processor used in main query. May be used to get groups in case when grouping
      *                         in subquery must be the same as in main query.
      */
     void doJoins(SQLQueryBuilder sqlQueryBuilder, SQLQuery sqlQuery,
-                 FiltersProcessor filtersProcessor, GroupsProcessor groupsProcessor);
+                 List<Filter> thriftFilters, IGroupExpressionProducer groupsProcessor);
 
     /**
      * Returns table.
@@ -58,4 +58,11 @@ public interface MetricsProcessor {
      * there is no expression for this metric.
      */
     ComparableExpressionBase getMetricExpression(Metric metric);
+
+    /**
+     * Returns alias to use for row number in percentile subquery
+     * @param percentileField
+     * @return
+     */
+    String createPercentileRowNumberAliasName(String percentileField);
 }

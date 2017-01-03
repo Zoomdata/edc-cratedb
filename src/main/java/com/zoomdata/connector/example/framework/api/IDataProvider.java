@@ -1,5 +1,5 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.framework.api;
 
@@ -10,7 +10,7 @@ import com.zoomdata.gen.edc.request.serverdescription.ServerDescription;
  * DataSource related methods (connector)
  *
  * Provide implementation of this interface for specific datasource.
- * Implementation allows to use EDC based connectivity to new datasource from zoomdata.
+ * Implementation allows to use connector framework based connectivity to new datasource from Zoomdata.
  *
  */
 public interface IDataProvider {
@@ -65,3 +65,4 @@ public interface IDataProvider {
     void validateRequestInfo(RequestInfo requestInfo);
 
 }
+

@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <groupId>com.zoomdata</groupId>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>connector-server-cratedb</artifactId>
@@ -11,23 +11,23 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Copyright -->
         <inceptionYear>2012</inceptionYear>
-        <currentYear>2016</currentYear>
+        <currentYear>2017</currentYear>
         <copyrightOwner>Zoomdata, Inc.</copyrightOwner>
         <!-- Versions -->
         <connector-api.version>2.3.1</connector-api.version>
         <crate.jdbc.version>1.13.1</crate.jdbc.version>
         <query.dsl.version>4.1.4</query.dsl.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        <lombok.version>1.16.10</lombok.version>
+        <slf4j.version>1.7.22</slf4j.version>
+        <logback.version>1.1.8</logback.version>
+        <lombok.version>1.16.12</lombok.version>
         <thrift.version>0.9.3</thrift.version>
         <dbcp2.version>2.1.1</dbcp2.version>
         <!-- Additional versions for core things -->
-        <spring.boot.version>1.4.0.RELEASE</spring.boot.version>
+        <spring.boot.version>1.4.3.RELEASE</spring.boot.version>
         <json.version>20160810</json.version>
         <joda.time.version>2.9.4</joda.time.version>
         <commons.lang.version>3.4</commons.lang.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>20.0</guava.version>
     </properties>
 
     <repositories>
