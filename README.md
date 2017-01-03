@@ -44,8 +44,7 @@ There's also a [tutorial video](https://drive.google.com/open?id=0B5hqni4_xCGadG
 
 _TODO: Link the Zoomdata connector testing guide when it's made publicly available_
 
-This package also includes a simple crate.io container pre-loaded with the Zoomdata connector testing reference data. It uses 
-[Docker](https://www.docker.com/) to run the container so no further installation is required.
+This package also includes a simple crate.io container pre-loaded with the Zoomdata connector testing reference data. It uses [Docker](https://www.docker.com/) to run the container so no further installation is required.
 
 First, build the container with:
 
@@ -53,7 +52,7 @@ First, build the container with:
 
 Run the container exposing the default ports. The ports can be adjusted if needed:
 
-`docker run -it --rm -p 4200:4200 -p 4300:4300 zoomdata/crate-test`
+`docker run -it --rm -p 4200:4200 -p 4300:4300 -p 5432:5432 zoomdata/crate-test`
 
 Assuming the default ports were used, you should now be able to see the two testing tables in the `integration_tests` schema via the web admin UI:
 
@@ -65,7 +64,7 @@ With our sample data source ready, [start the connector server](#starting) and l
 
 In connector shell, create a data source (assuming default ports):
 
-`datasource add -n cratedb CONNECTOR_TYPE CRATEDB JDBC_URL crate://localhost:4300`
+`datasource add -n cratedb CONNECTOR_TYPE CRATEDB JDBC_URL crate://localhost:5432`
 
 Run the structured query test suite to validate structured request and query functionality:
 
@@ -77,11 +76,12 @@ Run the meta test suite to validate server description and meta functionality:
 
 ## Limitations
 
-This connector has only been tested with the version 0.55.4 of crate.io. It's not guaranteed to work with any other versions.
+The connector uses the CrateDB JDBC driver 2.x, which means that it is compatible with CreateDB >= 0.57.0. The driver does not use the CrateDB transport port to connect to a CrateDB server any longer and the connection string format has changed since the driver version 1.x.
+
+Please see the [CrateDB JDBC documentation](https://crate.io/docs/reference/jdbc/en/2.1.2/#jdbc-driver-class) for further reference.
 
 ## Additional Notes
 
-Although this implementation uses Java and some freely available libraries for convenience, they are not a *requirement* for 
-building a connector server.
+Although this implementation uses Java and some freely available libraries for convenience, they are not a *requirement* for building a connector server.
 
 Any language capable of generating code from [Apache Thrift](https://thrift.apache.org/) can be used.

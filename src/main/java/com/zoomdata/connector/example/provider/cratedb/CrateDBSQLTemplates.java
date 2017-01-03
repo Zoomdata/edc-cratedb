@@ -5,7 +5,7 @@ package com.zoomdata.connector.example.provider.cratedb;
 
 import com.google.common.collect.ImmutableSet;
 import com.querydsl.core.types.Ops;
-import com.querydsl.sql.MySQLTemplates;
+import com.querydsl.sql.PostgreSQLTemplates;
 import com.zoomdata.connector.example.framework.common.sql.ops.ExtendedDateTimeOps;
 
 import java.sql.Types;
@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 
 // CrateDB mostly closely mimics MySQL dialect, so use the existing QueryDSL templates and modify as needed
-public class CrateDBSQLTemplates extends MySQLTemplates {
+public class CrateDBSQLTemplates extends PostgreSQLTemplates {
 
     private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
