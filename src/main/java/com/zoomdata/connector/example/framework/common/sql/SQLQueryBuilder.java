@@ -1,8 +1,9 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.framework.common.sql;
 
+import com.querydsl.core.types.Path;
 import com.querydsl.sql.SQLTemplates;
 import com.zoomdata.gen.edc.filter.Filter;
 import com.zoomdata.gen.edc.group.Group;
@@ -70,9 +71,9 @@ public interface SQLQueryBuilder {
 
     StatsProcessor createStatsProcessor();
 
-    FiltersProcessor createFiltersProcessor();
+    FiltersProcessor createFiltersProcessor(Path<?> table);
 
-    GroupsProcessor createGroupsProcessor();
+    IGroupExpressionProducer createGroupsProcessor();
 
     RawSortsProcessor createRawSortsProcessor();
 

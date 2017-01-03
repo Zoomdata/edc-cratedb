@@ -1,5 +1,5 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.common.utils.metadatabuilders;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.zoomdata.gen.edc.filter.FilterFunction.*;
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.Collections.emptyList;
@@ -118,102 +119,102 @@ public class Filters {
 
     public static Filter ge(String field, String value, FieldType type) {
         return new Filter(FilterFunction.GE)
-            .setFilterGE(new FilterGE()
-                    .setPath(field)
-                    .setType(type)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterGE(new FilterGE()
+                        .setPath(field)
+                        .setType(type)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter gt(String field, String value, FieldType type) {
         return new Filter(FilterFunction.GT)
-            .setFilterGT(new FilterGT()
-                    .setPath(field)
-                    .setType(type)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterGT(new FilterGT()
+                        .setPath(field)
+                        .setType(type)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter lt(String field, String value, FieldType type) {
         return new Filter(FilterFunction.LT)
-            .setFilterLT(new FilterLT()
-                    .setPath(field)
-                    .setType(type)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterLT(new FilterLT()
+                        .setPath(field)
+                        .setType(type)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter le(String field, String value, FieldType type) {
         return new Filter(FilterFunction.LE)
-            .setFilterLE(new FilterLE()
-                    .setPath(field)
-                    .setType(type)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterLE(new FilterLE()
+                        .setPath(field)
+                        .setType(type)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter eq(String field, String value, FieldType type) {
         return new Filter(FilterFunction.EQ)
-            .setFilterEQ(new FilterEQ()
-                    .setPath(field)
-                    .setType(type)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterEQ(new FilterEQ()
+                        .setPath(field)
+                        .setType(type)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter isNull(String field, FieldType type) {
         return new Filter(FilterFunction.IS_NULL)
-            .setFilterISNULL(new FilterISNULL()
-                    .setType(type)
-                    .setPath(field)
-            );
+                .setFilterISNULL(new FilterISNULL()
+                        .setType(type)
+                        .setPath(field)
+                );
     }
 
     public static Filter eqi(String field, String value) {
         return new Filter(FilterFunction.EQI)
-            .setFilterEQI(new FilterEQI()
-                    .setPath(field)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterEQI(new FilterEQI()
+                        .setPath(field)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter in(String field, FieldType type, String... values) {
         return new Filter(FilterFunction.IN)
-            .setFilterIN(new FilterIN()
-                .setPath(field)
-                .setType(type)
-                .setValues(stream(values)
-                    .map(v -> new Field().setValue(v))
-                    .collect(Collectors.toList())));
+                .setFilterIN(new FilterIN()
+                        .setPath(field)
+                        .setType(type)
+                        .setValues(stream(values)
+                                .map(v -> new Field().setValue(v))
+                                .collect(Collectors.toList())));
     }
 
     public static Filter contains(String field, String value) {
         return new Filter(FilterFunction.CONTAINS)
-            .setFilterCONTAINS(new FilterCONTAINS()
-                    .setPath(field)
-                    .setValue(new Field().setValue(value))
-            );
+                .setFilterCONTAINS(new FilterCONTAINS()
+                        .setPath(field)
+                        .setValue(new Field().setValue(value))
+                );
     }
 
     public static Filter textSearch(String field, String value) {
         return new Filter(FilterFunction.TEXT_SEARCH)
-            .setFilterTEXT_SEARCH(new FilterTEXT_SEARCH()
-                    .setPath(field)
-                    .setValue(value)
-            );
+                .setFilterTEXT_SEARCH(new FilterTEXT_SEARCH()
+                        .setPath(field)
+                        .setValue(value)
+                );
     }
 
     public static Filter textSearch(String value) {
         return new Filter(FilterFunction.TEXT_SEARCH)
-            .setFilterTEXT_SEARCH(new FilterTEXT_SEARCH()
-                    .setValue(value)
-            );
+                .setFilterTEXT_SEARCH(new FilterTEXT_SEARCH()
+                        .setValue(value)
+                );
     }
 
     public static Filter not(Filter filter) {
         return new Filter(FilterFunction.NOT)
-            .setFilterNOT(new FilterNOT()
-                .setFilter(filter));
+                .setFilterNOT(new FilterNOT()
+                        .setFilter(filter));
     }
 
     public static Filter or(Filter... subFilters) {
@@ -222,8 +223,8 @@ public class Filters {
 
     public static Filter or(List<Filter> subFilters) {
         return new Filter(FilterFunction.OR)
-            .setFilterOR(new FilterOR()
-                .setFilters(subFilters));
+                .setFilterOR(new FilterOR()
+                        .setFilters(subFilters));
     }
 
     public static Filter and(Filter... subFilters) {
@@ -232,8 +233,8 @@ public class Filters {
 
     public static Filter and(List<Filter> subFilters) {
         return new Filter(FilterFunction.AND)
-            .setFilterAND(new FilterAND()
-                .setFilters(subFilters));
+                .setFilterAND(new FilterAND()
+                        .setFilters(subFilters));
     }
 
     public static Filter newCompositeFilter(FilterFunction type, List<Filter> filters) {
@@ -245,7 +246,7 @@ public class Filters {
             case NOT:
                 return new Filter(NOT).setFilterNOT(new FilterNOT(filters.get(0)));
             default:
-                throw new IllegalArgumentException(String.format("Filter of type [%s] can't contain inner filters: %s", type, filters));
+                throw new IllegalArgumentException(format("Filter of type [%s] can't contain inner filters: %s", type, filters));
         }
     }
 

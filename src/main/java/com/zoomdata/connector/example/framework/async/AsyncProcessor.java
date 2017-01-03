@@ -1,5 +1,5 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.framework.async;
 
@@ -31,11 +31,11 @@ public class AsyncProcessor {
             log.debug("Tasks count by provider " + simpleName + ": " + tasks.size());
 
             tasks.entrySet().stream()
-                .filter(e -> e.getValue().checkLostAndClose())
-                .map(Map.Entry::getKey)
-                .collect(toList())
-                .stream()
-                .forEach(tasks::remove);
+                    .filter(e -> e.getValue().checkLostAndClose())
+                    .map(Map.Entry::getKey)
+                    .collect(toList())
+                    .stream()
+                    .forEach(tasks::remove);
         }, 10, 10, TimeUnit.SECONDS);
     }
 

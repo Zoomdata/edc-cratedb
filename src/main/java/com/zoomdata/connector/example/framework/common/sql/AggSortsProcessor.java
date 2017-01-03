@@ -1,5 +1,5 @@
 /**
- * Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+ * Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
  */
 package com.zoomdata.connector.example.framework.common.sql;
 
@@ -21,23 +21,5 @@ public interface AggSortsProcessor {
      * @return list of {@link OrderSpecifier} for ORDER BY.
      */
     List<OrderSpecifier> process(Path<?> table, List<AggSort> sorts,
-                                 MetricsProcessor metricsProcessor, GroupsProcessor groupsProcessor);
-
-    /**
-     * Returns table.
-     * @return table or <code>null</code> if processor hasn't been initialized.
-     */
-    Path<?> getTable();
-
-    /**
-     * Returns list of processed sorts.
-     * @return list of sorts or <code>null</code> if processor hasn't been initialized.
-     */
-    List<AggSort> getThriftAggSorts();
-
-    /**
-     * Returns result of {@link #process(Path, List, MetricsProcessor, GroupsProcessor)} method execution.
-     * @return list of {@link OrderSpecifier} or <code>null</code> if processor hasn't been initialized.
-     */
-    List<OrderSpecifier> getOrderBy();
+                                 MetricsProcessor metricsProcessor, IGroupExpressionProducer groupsProcessor);
 }
