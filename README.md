@@ -1,4 +1,4 @@
-# Copyright (C) Zoomdata, Inc. 2012-2016. All rights reserved.
+# Copyright (C) Zoomdata, Inc. 2012-2017. All rights reserved.
 
 Sample Connector Server for building a crate.io connector from the Zoomdata 2.x Connector API
 
