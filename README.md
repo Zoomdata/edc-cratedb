@@ -64,7 +64,7 @@ With our sample data source ready, [start the connector server](#starting) and l
 
 In connector shell, create a data source (assuming default ports):
 
-`datasource add -n cratedb CONNECTOR_TYPE CRATEDB JDBC_URL crate://localhost:5432`
+`datasource add -n cratedb CONNECTOR_TYPE CRATEDB JDBC_URL crate://localhost:5432/`
 
 Run the structured query test suite to validate structured request and query functionality:
 

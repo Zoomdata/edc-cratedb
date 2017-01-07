@@ -82,7 +82,6 @@ public class CrateDBMetaFlagsDetector {
         return of(partitionedByClause.split(","))
                 .map(String::trim)
                 .map(this::extractColumnName)
-                .map(String::toLowerCase)
                 .collect(toSet());
     }
 
