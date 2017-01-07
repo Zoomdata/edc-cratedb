@@ -35,7 +35,7 @@ RUN apt-get -y install crate
 ADD crate-backup.tar.gz /var/lib/crate
 
 # Expose default Crate ports
-EXPOSE 4200 4300
+EXPOSE 4200 4300 5432
 
 RUN touch /var/log/crate/crate.log
 CMD service crate start && tail -F /var/log/crate/crate.log

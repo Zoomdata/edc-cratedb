@@ -4,10 +4,8 @@
 package com.zoomdata.connector.example.provider.cratedb;
 
 import com.google.common.collect.ImmutableSet;
-import com.zoomdata.connector.example.common.utils.FieldMetaFlag;
 import com.zoomdata.connector.example.framework.annotation.Connector;
 import com.zoomdata.connector.example.framework.api.IDescriptionProvider;
-import com.zoomdata.connector.example.framework.common.JdbcCommons;
 import com.zoomdata.connector.example.framework.common.sql.SQLQueryBuilder;
 import com.zoomdata.connector.example.framework.provider.GenericSQLDataProvider;
 import com.zoomdata.connector.example.framework.provider.serverdescription.GenericDescriptionProvider;
@@ -15,13 +13,12 @@ import com.zoomdata.connector.example.provider.cratedb.sql.CrateDBSQLQueryBuilde
 import com.zoomdata.gen.edc.request.MetaDescribeRequest;
 import com.zoomdata.gen.edc.types.FieldMetadata;
 
-import java.sql.*;
-import java.util.Arrays;
+import java.sql.Connection;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static com.zoomdata.connector.example.common.utils.FieldMetaFlag.PLAYABLE;
 import static com.zoomdata.connector.example.framework.provider.serverdescription.connectionparameters.impl.PasswordConnectionParameter.PasswordConnectionParameterBuilder.passwordParameter;
 import static com.zoomdata.connector.example.framework.provider.serverdescription.connectionparameters.impl.StringConnectionParameter.StringConnectionParameterBuilder.stringParameter;
 import static com.zoomdata.connector.example.provider.cratedb.CrateDBDataProvider.CONNECTION_TYPE;
@@ -32,12 +29,16 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
     // The unique connection type that will be registered in Zoomdata
     protected final static String CONNECTION_TYPE = "CRATEDB";
 
+    // This is how we'll assign special flags for Zoomdata such as PARTITION
+    private final CrateDBMetaFlagsDetector metaFlagsDetector;
+
     public CrateDBDataProvider() {
         super(
             new CrateDBSQLTemplates(),
             new CrateDBTypesMapping(),
             new CrateDBFeatures()
         );
+        metaFlagsDetector = new CrateDBMetaFlagsDetector(sqlTemplates);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
     @Override
     protected Set<String> systemSchemas() {
         // A list of schemas used by the data source that we shouldn't display to end users
-        return ImmutableSet.of("sys", "information_schema", "blob");
+        return ImmutableSet.of("blob", "information_schema", "pg_catalog", "sys");
     }
 
     @Override
@@ -77,27 +78,7 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
     // fields that are partitions
     @Override
     protected void detectIndexedFields(Connection connection, MetaDescribeRequest request, List<FieldMetadata> metadata) throws SQLException {
-        String collectionName = request.getCollectionInfo().getCollection();
-        String schemaName = request.getCollectionInfo().getSchema();
-        String checkPartitions = String.format("SELECT partitioned_by FROM information_schema.tables WHERE lower(table_name)='%s'",
-            collectionName.toLowerCase());
-        if(schemaName != null) {
-            checkPartitions = checkPartitions.concat(String.format("AND lower(schema_name)='%s'", schemaName.toLowerCase()));
-        }
-        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(checkPartitions)) {
-            while(resultSet.next()) { // This should really only be once since we're filtering to table
-                Array result = resultSet.getArray(1);
-                if(result != null) {
-                    final Set<String> partitionedColumns = Arrays.stream((Object[]) result.getArray())
-                        .map(Object::toString)
-                        .collect(Collectors.toSet());
-                    metadata.stream()
-                        .filter(m -> partitionedColumns.contains(m.getName().toLowerCase()))
-                        .forEach(m -> FieldMetaFlag.addFlags(m, PLAYABLE));
-                }
-            }
-            JdbcCommons.closeResultSet(resultSet);
-        }
+        metaFlagsDetector.populateMetaFlags(connection, request.getCollectionInfo(), metadata);
     }
 
     @Override

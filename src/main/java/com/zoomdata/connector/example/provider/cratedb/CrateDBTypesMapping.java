@@ -15,29 +15,26 @@ import java.util.Map;
 // From https://crate.io/docs/reference/sql/data_types.html
 public class CrateDBTypesMapping implements ITypesMapping {
 
-    private final Meta defaultMeta = metaString();
+    private final Meta defaultMeta = metaUnknown();
 
     private final Map<String, Meta> typesMapping =
         ImmutableMap.<String, Meta>builder()
+            // The types reported by the JDBC driver are PostgreSQL types and do not reflect https://crate.io/docs/reference/sql/data_types.html
             // Primitives
-            .put("boolean", metaString())
-            .put("byte", metaInt())
-            .put("short", metaInt())
-            .put("integer", metaInt())
-            .put("long", metaInt())
-            .put("float", metaDouble())
-            .put("double", metaDouble())
-            .put("string", metaString())
-            .put("ip", metaString())
-            .put("timestamp", metaTimestamp())
+            .put("bool", metaUnknown())
+            .put("char", metaString())
+            .put("float4", metaDouble())
+            .put("float8", metaDouble())
+            .put("int2", metaInt())
+            .put("int4", metaInt())
+            .put("int8", metaInt())
+            .put("varchar", metaString())
+            .put("timestamptz", metaTimestamp())
             // Geo types - Zoomdata generally doesn't handle native geo types for now
             // You can flatten geo types to a lat and long field and provide that way
-            .put("geo_point", metaUnknown())
-            .put("geo_shape", metaUnknown())
-            // Compound Types - Zoomdata typically needs nested or complex types to be flattened
-            // or specially handled
-            .put("object", metaUnknown())
-            .put("array", metaUnknown())
+            // Compound Types - Zoomdata typically needs nested or complex types to be flattened or specially handled
+            .put("float8_array", metaUnknown())
+            .put("json", metaUnknown())
             .build();
 
     private static Meta metaInt() {
