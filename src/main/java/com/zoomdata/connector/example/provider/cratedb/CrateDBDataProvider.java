@@ -87,8 +87,8 @@ public class CrateDBDataProvider extends GenericSQLDataProvider {
             .addParameters(stringParameter("JDBC_URL").isRequired(true).description("Specify JDBC URL in the required format"))
             .addParameters(stringParameter("USER_NAME").description("Specify the user name if connecting to your database requires authentication"))
             .addParameters(passwordParameter("PASSWORD").description("Specify the password if connecting to your database requires authentication"))
-            .maxVersion("0.5")
-            .minVersion("0.5")
+            .maxVersion("1.0")
+            .minVersion("0.57")
             .svgIcon("/crateio_logo.svg");
     }
 
