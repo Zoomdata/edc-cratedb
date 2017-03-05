@@ -32,14 +32,14 @@ public class CrateDBFeatures implements IFeatures {
                     .put("FEATURE.SUPPORTS_NESTED", "false")
                     .put("FEATURE.SUPPORTED_BY_SPARKIT", "true")
                     .put("FEATURE.SUPPORTS_SCHEMA", "true")
+                    // Supported since Crate 1.0.3
+                    // See https://github.com/crate/crate/issues/4673
+                    .put("FEATURE.CUSTOM_QUERY", "true")
                     // Not a real "feature" but this is required for enabling FEATURE.PAGING_AND_SORTING.AGGREGATED
                     .put("FEATURE.PAGING_AND_SORTING", "true")
                     .put("FEATURE.PAGING_AND_SORTING.AGGREGATED", "true")
                     // Not a real "feature" but this is required for Zoomdata to communicate
                     .put("REQUEST.TYPE", "STRUCTURED")
-                    // Crate support of sub-select is mostly adequate since 1.0.1 but still fails some tests
-                    // See https://github.com/crate/crate/issues/4673
-                    .put("FEATURE.CUSTOM_QUERY", "false")
                     // Crate doesn't support the necessary syntax for these features
                     .put("FEATURE.LV_METRIC", "false")
                     .put("FEATURE.PERCENTILES", "false")
