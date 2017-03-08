@@ -78,7 +78,7 @@ Run the meta test suite to validate server description and meta functionality:
 
 The connector uses the CrateDB JDBC driver 2.x, which means that it is compatible with CrateDB >= 0.57.0. The driver does not use the CrateDB transport port to connect to a CrateDB server any longer and the connection string format has changed since the driver version 1.x.
 
-Please see the [CrateDB JDBC documentation](https://crate.io/docs/reference/jdbc/en/2.1.2/#jdbc-driver-class) for further reference.
+Please see the [CrateDB JDBC documentation](https://crate.io/docs/reference/jdbc/en/2.1.6/#jdbc-driver-class) for further reference.
 
 ## Additional Notes
 

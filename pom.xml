@@ -15,7 +15,7 @@
         <copyrightOwner>Zoomdata, Inc.</copyrightOwner>
         <!-- Versions -->
         <connector-api.version>2.3.1</connector-api.version>
-        <crate.jdbc.version>2.1.2</crate.jdbc.version>
+        <crate.jdbc.version>2.1.6</crate.jdbc.version>
         <query.dsl.version>4.1.4</query.dsl.version>
         <slf4j.version>1.7.22</slf4j.version>
         <logback.version>1.1.8</logback.version>
@@ -47,6 +47,19 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
 
@@ -139,14 +152,6 @@
                     <artifactId>javax.el</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <!-- Import dependency management from Spring Boot -->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${spring.boot.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
