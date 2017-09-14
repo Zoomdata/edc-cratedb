@@ -24,7 +24,11 @@ By default, the connector will serve connections over HTTP at http://localhost:7
 
 ## Connecting to Zoomdata
 
-Refer to the [official Zoomdata docs](http://docs.zoomdata.com/managing-connector-services) for instructions to register a connector server.
+Refer to the [official Zoomdata docs](https://www.zoomdata.com/docs) for instructions to register a connector server.
+
+Make sure to select `HTTP` as `Connector Server Type` and to add the `Server URL` in the following format:
+
+`http://127.0.0.1:7337/connector/`
 
 Once the connector server is created, the connection type will need to be manually added.
 
