@@ -64,6 +64,12 @@ http://localhost:4200/_plugin/crate-admin/#/tables
 
 It may take a moment for the data to replicate and show as available.
 
+Next, start up the EDC server under the `crate` user. This will have the crate user execute commands against the docker crate server:
+
+1. `su - crate`
+2. Enter the crate user's password
+3. Execute `./start-server.sh`
+
 With our sample data source ready, [start the connector server](#starting) and launch `connector-shell` as provided by the Zoomdata testing guide.
 
 In connector shell, create a data source (assuming default ports):
