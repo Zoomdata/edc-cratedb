@@ -24,7 +24,11 @@ By default, the connector will serve connections over HTTP at http://localhost:7
 
 ## Connecting to Zoomdata
 
-Refer to the [official Zoomdata docs](http://docs.zoomdata.com/managing-connector-services) for instructions to register a connector server.
+Refer to the [official Zoomdata docs](https://www.zoomdata.com/docs) for instructions to register a connector server.
+
+Make sure to select `HTTP` as `Connector Server Type` and to add the `Server URL` in the following format:
+
+`http://127.0.0.1:7337/connector/`
 
 Once the connector server is created, the connection type will need to be manually added.
 
@@ -59,6 +63,12 @@ Assuming the default ports were used, you should now be able to see the two test
 http://localhost:4200/_plugin/crate-admin/#/tables
 
 It may take a moment for the data to replicate and show as available.
+
+Next, start up the EDC server under the `crate` user. This will have the crate user execute commands against the docker crate server:
+
+1. `su - crate`
+2. Enter the crate user's password
+3. Execute `./start-server.sh`
 
 With our sample data source ready, [start the connector server](#starting) and launch `connector-shell` as provided by the Zoomdata testing guide.
 

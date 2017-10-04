@@ -15,7 +15,7 @@
         <copyrightOwner>Zoomdata, Inc.</copyrightOwner>
         <!-- Versions -->
         <connector-api.version>2.3.1</connector-api.version>
-        <crate.jdbc.version>2.1.6</crate.jdbc.version>
+        <crate.jdbc.version>2.2.0</crate.jdbc.version>
         <query.dsl.version>4.1.4</query.dsl.version>
         <slf4j.version>1.7.22</slf4j.version>
         <logback.version>1.1.8</logback.version>
